@@ -3,7 +3,12 @@ import dotenv from "dotenv"
 import cors from "cors"
 import cookieParser from "cookie-parser"
 import fileUpload from "express-fileupload"
+import { dbConnection } from "./database/dbConnection.js"
 
+
+import userRouter from "./routes/userRouter.js"
+import applicationRouter from "./routes/applicationRouter.js"
+import jobRouter from "./routes/jobRouter.js"
 
 const app = express()
 
@@ -30,5 +35,12 @@ app.use(
         }
         
 ));
+
+
+app.use("/api/v1/users", userRouter)
+app.use("/api/v1/application", applicationRouter)
+app.use("/api/v1/job", jobRouter)
+
+dbConnection()
 
 export default app;

@@ -4,6 +4,7 @@ import cors from "cors"
 import cookieParser from "cookie-parser"
 import fileUpload from "express-fileupload"
 import { dbConnection } from "./database/dbConnection.js"
+import ErrorHandler, { errorMiddleware } from "./middleswares/error.js"
 
 
 import userRouter from "./routes/userRouter.js"
@@ -42,5 +43,7 @@ app.use("/api/v1/application", applicationRouter)
 app.use("/api/v1/job", jobRouter)
 
 dbConnection()
+
+app.use(errorMiddleware)
 
 export default app;

@@ -1,6 +1,7 @@
 import { asyncHandler } from "../middleswares/asyncHandler.js";
 import { User } from "../models/userSchema.js";
 import ErrorHandler from "../middleswares/error.js";
+import { sendToken } from "../utils/jwtTokens.js";
 
 
 export const register = asyncHandler(async (req, res, next) => {
@@ -19,9 +20,11 @@ export const register = asyncHandler(async (req, res, next) => {
     password,
     role,
   });
-  res.status(200).json({
-    success: true,
-    message: "user registered",
+  sendToken(
     user,
-  })
+    200,
+    res,
+    "User registered successfully"
+  )
 });
+

@@ -1,9 +1,28 @@
-import React from 'react'
+import React from "react";
+import { useContext } from "react";
+import { Context } from "../../main";
+import { Navigate } from "react-router-dom";
+import HeroSection from "./HeroSection";
+import HowItWorks from "./HowItWorks";
+
+import PopularCompanies from "./PopularCompanies";
+import PopularCatagories from "./PopularCatagories";
 
 const Home = () => {
+  const { isAuthorized } = useContext(Context);
+  if (!isAuthorized) {
+    return <Navigate to={"/login"} />;
+  }
   return (
-    <div>Home</div>
-  )
-}
+    <>
+      <section className="homePage page">
+        <HeroSection />
+        <HowItWorks />
+        <PopularCatagories/>
+        <PopularCompanies />
+      </section>
+    </>
+  );
+};
 
-export default Home
+export default Home;

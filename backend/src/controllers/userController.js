@@ -46,11 +46,13 @@ export const login = asyncHandler(async (req,res,next) => {
   const isPasswordMatched = await user.comparePassword(password);
 
   if(!isPasswordMatched){
-    return new ErrorHandler("Invalid Emial or Password",400)
+    return new ErrorHandler("Invalid Email or Password",400)
   }
 
   if(user.role !== role){
-    return new ErrorHandler("user with this role not exist",400)
+    return next(
+      new ErrorHandler(`User with provided email and ${role} not found!`, 404)
+    );
   }
 
   sendToken(user, 200, res, "User logged in successfully")

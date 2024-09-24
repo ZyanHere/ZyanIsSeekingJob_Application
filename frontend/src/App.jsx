@@ -1,10 +1,11 @@
+import Footer from './components/ui/shared/Footer';
 import Navbar from './components/ui/shared/Navbar';
 
 function App() {
     return (
     <>
-      <h1>hello world</h1>
       <Navbar/>
+      {/* <Footer/> */}
     </>
   )
 }

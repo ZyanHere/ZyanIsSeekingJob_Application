@@ -5,7 +5,6 @@ import { Avatar, AvatarImage } from "../ui/avatar";
 import { Button } from "../ui/button";
 import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
 
-
 const Navbar = () => {
   const user = false;
   return (
@@ -17,13 +16,16 @@ const Navbar = () => {
           </h1>
         </div>
         <div className="flex items-center gap-12">
-          {/* <li><Link>Home</Link></li>
-          <li><Link>Jobs</Link></li>
-          <li><Link>Browse</Link></li> */}
           <ul className="flex font-medium items-center gap-5 ">
-            <li>Home</li>
-            <li>Jobs</li>
-            <li>Browse</li>
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+            <li>
+              <Link to="/jobs">Jobs</Link>
+            </li>
+            <li>
+              <Link to="/browse">Browse</Link>
+            </li>
           </ul>
 
           {!user ? (
@@ -32,9 +34,13 @@ const Navbar = () => {
                 <Button variant="primary">Login</Button>
               </Link>
               <Link to="/signup">
-                <Button variant="outline" className="bg-[#9967ee] hover:bg-[#672acf]">Sign Up</Button>
+                <Button
+                  variant="outline"
+                  className="bg-[#9967ee] hover:bg-[#672acf]"
+                >
+                  Sign Up
+                </Button>
               </Link>
-              
             </div>
           ) : (
             <Popover>
